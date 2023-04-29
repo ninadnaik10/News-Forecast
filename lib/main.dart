@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:statusbarz/statusbarz.dart';
+import 'package:flutter/services.dart';
 import 'package:weather_news_app/pages/news_page.dart';
 import 'package:weather_news_app/pages/weather_page.dart';
 
@@ -13,23 +13,26 @@ void main() {
   );
 }
 
-Color brandColor = const Color(0XFF4166f5);
+late ColorScheme lightColorScheme;
+Color brandColor = const Color(0XFFFFFFFF);
+late SystemUiOverlayStyle navigationBarStyle;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return DynamicColorBuilder(
         builder: (ColorScheme? lightDynamic, ColorScheme? dark) {
-      ColorScheme lightColorScheme;
-
-      if (lightDynamic != null && dark != null) {
+      if (lightDynamic != null) {
         lightColorScheme = lightDynamic.harmonized()..copyWith();
-        lightColorScheme = lightColorScheme.copyWith(secondary: brandColor);
       } else {
         lightColorScheme = ColorScheme.fromSeed(seedColor: brandColor);
       }
+      navigationBarStyle = const SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.white,
+      );
+
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -58,10 +61,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setSystemUIOverlayStyle(navigationBarStyle);
+  }
+
+
+
   int currentPageIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       appBar: AppBar(
         title: Text(widget.title),
         actions: const <Widget>[

@@ -15,11 +15,15 @@ class NewsPage extends ConsumerWidget {
     bool isLoading = ref.watch(newsProvider).isLoading;
 
     return SafeArea(
-        child: isLoading ?
-        const Center(
-          child: CircularProgressIndicator(),) : ListView.builder(
-          itemBuilder: (BuildContext context, int index) => NewsCard(article: news.articles![index], newsNumber: index,),
-          itemCount: news.articles!.length)
-        );
+        child: isLoading
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : ListView.builder(
+                itemBuilder: (BuildContext context, int index) => NewsCard(
+                      article: news.articles![index],
+                      newsNumber: index,
+                    ),
+                itemCount: news.articles!.length));
   }
 }
