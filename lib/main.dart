@@ -102,12 +102,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       body: <Widget>[
-        WeatherPage(),
-        NewsPage(),
-        Container(
-          alignment: Alignment.center,
-          child: const Text('Page 3'),
-        ),
+        const WeatherPage(),
+        const NewsPage()
       ][currentPageIndex],
     );
   }
