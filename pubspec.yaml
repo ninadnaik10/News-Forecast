@@ -43,6 +43,7 @@ dependencies:
   statusbarz: ^1.0.13
   google_fonts:
   url_launcher: ^6.1.10
+  http:
 
 dev_dependencies:
   flutter_test:
