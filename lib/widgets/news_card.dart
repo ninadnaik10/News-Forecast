@@ -84,61 +84,62 @@ class NewsCard extends StatelessWidget {
                 // backgroundColor: const Color(0x44000000),
                 elevation: 0,
               ),
-              body: Column(
-                children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(10.0),
-                        bottomRight: Radius.circular(10.0),
+              body: SingleChildScrollView(
+                child: Wrap(
+                  children: [
+                    Container(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(10.0),
+                          bottomRight: Radius.circular(10.0),
+                        ),
+                      ),
+                      child: SizedBox(
+                        height: 250,
+                        child: Hero(
+                          transitionOnUserGestures: true,
+                          tag: newsNumber,
+                          child: CachedNetworkImage(
+                            imageUrl: article.urlToImage == null
+                                ? NewsApiUrl.imageNotFound
+                                : article.urlToImage.toString(),
+                            errorWidget: (context, string, _) {
+                              return const Icon(Icons.error);
+                            },
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                     ),
-                    child: Hero(
-                      transitionOnUserGestures: true,
-                      tag: newsNumber,
-                      child: CachedNetworkImage(
-                        imageUrl: article.urlToImage == null
-                            ? NewsApiUrl.imageNotFound
-                            : article.urlToImage.toString(),
-                        errorWidget: (context, string, _) {
-                          return const Icon(Icons.error);
-                        },
+                    Container(
+                      margin: const EdgeInsets.all(20.0),
+                      padding: const EdgeInsets.all(10.0),
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        color: Colors.white,
+                      ),
+                      child: Column(
+                        children: [
+                          Text(
+                            article.title ?? "No text available",
+                            style: GoogleFonts.openSans(
+                                fontSize: 30, fontWeight: FontWeight.bold),
+                          ),
+                          const Padding(padding: EdgeInsets.only(bottom: 20.0)),
+                          Text(
+                            article.description ?? "No text available..Read More",
+                            style: GoogleFonts.openSans(fontSize: 20),
+                          ),
+                          const Padding(padding: EdgeInsets.only(bottom: 20.0)),
+                          Text(
+                            finalContent ?? "No content available",
+                            style: GoogleFonts.openSans(fontSize: 14),
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(20.0),
-                    padding: const EdgeInsets.all(10.0),
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(10.0),
-                        bottomLeft: Radius.circular(10.0),
-                        topRight: Radius.circular(10.0),
-                        topLeft: Radius.circular(10.0),
-                      ),
-                      color: Colors.white,
-                    ),
-                    child: Column(
-                      children: [
-                        Text(
-                          article.title ?? "No text available",
-                          style: GoogleFonts.openSans(
-                              fontSize: 30, fontWeight: FontWeight.bold),
-                        ),
-                        const Padding(padding: EdgeInsets.only(bottom: 20.0)),
-                        Text(
-                          article.description ?? "No text available..Read More",
-                          style: GoogleFonts.openSans(fontSize: 20),
-                        ),
-                        const Padding(padding: EdgeInsets.only(bottom: 20.0)),
-                        Text(
-                          finalContent ?? "No content available",
-                          style: GoogleFonts.openSans(fontSize: 14),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             );
           }));
