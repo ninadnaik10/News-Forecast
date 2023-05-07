@@ -12,7 +12,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.2
   dynamic_color: ^1.6.3
   dio:
   flutter_riverpod:
@@ -22,6 +21,10 @@ dependencies:
   google_fonts:
   url_launcher: ^6.1.10
   dio_http_cache:
+  font_awesome_flutter:
+  weather_icons:
+  location: ^4.4.0
+#  geocoding:
 
 dev_dependencies:
   flutter_test:

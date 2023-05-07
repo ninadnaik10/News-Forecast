@@ -24,7 +24,7 @@ class WeatherNotifier extends StateNotifier<WeatherState> {
 
   loadWeather() async {
     state = state.copyWith(isLoading: true);
-    final weatherResponse = await WeatherServices().getWeatherData("Mumbai");
+    final weatherResponse = await WeatherServices().getWeatherData();
     final weather = WeatherModel.fromJson(weatherResponse);
     state = state.copyWith(weatherModel: weather ,isLoading: false);
   }

@@ -16,7 +16,8 @@ class NewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String? finalContent = article.content?.replaceAll(RegExp(r"\[\+.*"), "Read more");
+    String? finalContent =
+        article.content?.replaceAll(RegExp(r"\[\+.*"), "Read more");
     return Container(
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
@@ -88,26 +89,20 @@ class NewsCard extends StatelessWidget {
                 child: Wrap(
                   children: [
                     Container(
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(10.0),
-                          bottomRight: Radius.circular(10.0),
-                        ),
-                      ),
-                      child: SizedBox(
-                        height: 250,
-                        child: Hero(
-                          transitionOnUserGestures: true,
-                          tag: newsNumber,
-                          child: CachedNetworkImage(
-                            imageUrl: article.urlToImage == null
-                                ? NewsApiUrl.imageNotFound
-                                : article.urlToImage.toString(),
-                            errorWidget: (context, string, _) {
-                              return const Icon(Icons.error);
-                            },
-                            fit: BoxFit.cover,
-                          ),
+                      // alignment: Alignment.center,
+                      height: 250,
+                      child: Hero(
+                        transitionOnUserGestures: true,
+                        tag: newsNumber,
+                        child: CachedNetworkImage(
+                          imageUrl: article.urlToImage == null
+                              ? NewsApiUrl.imageNotFound
+                              : article.urlToImage.toString(),
+                          errorWidget: (context, string, _) {
+                            return const Icon(Icons.error);
+                          },
+                          fit: BoxFit.cover,
+                          alignment: Alignment.center,
                         ),
                       ),
                     ),
@@ -127,7 +122,8 @@ class NewsCard extends StatelessWidget {
                           ),
                           const Padding(padding: EdgeInsets.only(bottom: 20.0)),
                           Text(
-                            article.description ?? "No text available..Read More",
+                            article.description ??
+                                "No text available..Read More",
                             style: GoogleFonts.openSans(fontSize: 20),
                           ),
                           const Padding(padding: EdgeInsets.only(bottom: 20.0)),
@@ -147,6 +143,7 @@ class NewsCard extends StatelessWidget {
       ),
     );
   }
+
   Future<void> _launchInBrowser(Uri url) async {
     if (!await launchUrl(
       url,

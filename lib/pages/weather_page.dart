@@ -16,7 +16,7 @@ class WeatherPage extends ConsumerWidget {
         ? const Center(
       child: CircularProgressIndicator(),
     )
-        : WeatherWidget(current: weather.current!,);
+        : WeatherWidget(current: weather.current!, location: weather.location!);
   }
 
 }

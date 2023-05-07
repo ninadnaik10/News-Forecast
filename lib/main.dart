@@ -4,8 +4,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
 import 'package:weather_news_app/pages/news_page.dart';
 import 'package:weather_news_app/pages/weather_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
+  //Setting SysemUIOverlay
+  // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+  //     // systemStatusBarContrastEnforced: true,
+  //     systemNavigationBarColor: Colors.transparent,
+  //     systemNavigationBarDividerColor: Colors.transparent,
+  //     systemNavigationBarIconBrightness: Brightness.dark,
+  //     // statusBarIconBrightness: Brightness.dark
+  //   )
+  // );
+
+//Setting SystmeUIMode
+//   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: [SystemUiOverlay.top]);
   runApp(
     const ProviderScope(
       child: MyApp(),
@@ -22,20 +35,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return DynamicColorBuilder(
         builder: (ColorScheme? lightDynamic, ColorScheme? dark) {
+          final Color primaryColor = Theme.of(context).primaryColor ?? Colors.transparent;
       if (lightDynamic != null) {
         lightColorScheme = lightDynamic.harmonized()..copyWith();
       } else {
         lightColorScheme = ColorScheme.fromSeed(seedColor: brandColor);
       }
       navigationBarStyle = const SystemUiOverlayStyle(
-        systemNavigationBarColor: Colors.white,
+        systemNavigationBarColor:  Colors.white,
       );
 
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          textTheme: TextTheme(
+            bodyMedium: GoogleFonts.openSans()
+          ),
           useMaterial3: true,
           colorScheme: lightColorScheme,
           appBarTheme: AppBarTheme(
