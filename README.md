@@ -11,7 +11,7 @@ News Forecast is an app to get weather and news updates.
 - Get news preview and continue reading the news you like in the browser (tech news as of now).
 
 ## Contribution
-All kind of contributions are appreciated! Head to [Contributing.md](https://github.com/ninadnaik10/news-forecast/contributing.md) to know more.
+All kind of contributions are appreciated! Head to [Contributing.md](https://github.com/ninadnaik10/news-forecast/blob/main/contributing.md) to know more.
 
 ## Screenshots
 ![photo_2023-05-23_20-29-10 (1)](https://github.com/ninadnaik10/News-Forecast/assets/86565419/29aeb8ab-546b-447c-be1b-af1a989c43a0)
