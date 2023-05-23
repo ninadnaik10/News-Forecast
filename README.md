@@ -17,5 +17,6 @@ All kind of contributions are appreciated! Head to [Contributing.md](https://git
 ![photo_2023-05-23_20-29-10 (1)](https://github.com/ninadnaik10/News-Forecast/assets/86565419/eb6845d6-b888-4a7c-8335-8377fc2bc37e)
 ![photo_2023-05-23_20-28-58 (1)](https://github.com/ninadnaik10/News-Forecast/assets/86565419/b2613802-fe14-45b1-bdd9-23849ac2175f)
 ![photo_2023-05-23_20-29-15 (1)](https://github.com/ninadnaik10/News-Forecast/assets/86565419/da2ede6f-516e-410b-8b07-8fbd85a69838)
+![photo_2023-05-23_23-26-07 (1)](https://github.com/ninadnaik10/News-Forecast/assets/86565419/cc0056d2-be14-4d5f-b85a-7adf09515d7d)
 
 
