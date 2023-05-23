@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:news_forecast/pages/news_page.dart';
 import 'package:news_forecast/pages/weather_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   //Setting SysemUIOverlay
@@ -89,8 +91,42 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        actions: const <Widget>[
-          Icon(Icons.more_vert),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return Scaffold(
+                    appBar: AppBar(
+                      title: const Text("About"),
+                    ),
+                    body: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'News Forecast by Ninad Naik',
+                            style: TextStyle(fontSize: 20, color: Colors.grey),
+                          ),
+                          IconButton(
+                            onPressed: () => launchUrl(
+                                Uri.parse(
+                                    'https://github.com/ninadnaik10/News-Forecast'),
+                                mode: LaunchMode.externalApplication),
+                            icon: const FaIcon(FontAwesomeIcons.github),
+                          ),
+                          ElevatedButton(
+                              onPressed: () {
+                                showLicensePage(context: context, applicationName: "News Forecast");
+                              },
+                              child: const Text("Licenses"))
+                          // IconButton(onPressed: () => launchUrl(Uri.parse('https://github.com/ninadnaik10/News-Forecast')), icon: const FaIcon(FontAwesomeIcons.github))
+                        ],
+                      ),
+                    ),
+                  );
+                }));
+              },
+              icon: const Icon(Icons.info_outline))
         ],
       ),
       bottomNavigationBar: NavigationBar(
