@@ -1,0 +1,10 @@
+[
+ {
+  "isDay": 0,
+  "icon": "FontAwesomeIcons.cloudMoon"
+ },
+{
+    "isDay": 1,
+    "icon": "FontAwesomeIcons.cloudSun"
+}
+]

@@ -1,4 +1,4 @@
-package com.example.weather_news_app
+package `in`.ninadnaik.news_forecast
 
 import io.flutter.embedding.android.FlutterActivity
 

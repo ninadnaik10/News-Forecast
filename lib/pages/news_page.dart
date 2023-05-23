@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:weather_news_app/main.dart';
-import 'package:weather_news_app/widgets/news_card.dart';
+import 'package:news_forecast/main.dart';
+import 'package:news_forecast/widgets/news_card.dart';
 
 import '../models/news_model.dart';
 import '../providers/news_provider.dart';

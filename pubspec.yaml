@@ -1,5 +1,5 @@
-name: weather_news_app
-description: A new Flutter project.
+name: news_forecast
+description: A news and weather app.
 
 publish_to: 'none'
 
@@ -17,13 +17,15 @@ dependencies:
   flutter_riverpod:
   freezed_annotation:
   cached_network_image:
-  statusbarz: ^1.0.13
+#  statusbarz: ^1.0.13
   google_fonts:
   url_launcher: ^6.1.10
   dio_http_cache:
   font_awesome_flutter:
   weather_icons:
-  location: ^4.4.0
+  http:
+#  location: ^4.4.0
+#  flutter_cache_manager: ^3.3.0
 #  geocoding:
 
 dev_dependencies:

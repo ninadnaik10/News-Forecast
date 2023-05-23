@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:weather_news_app/models/news_model.dart';
-import 'package:weather_news_app/main.dart';
+import 'package:news_forecast/models/news_model.dart';
+import 'package:news_forecast/main.dart';
 
 import '../constants/newsapiurl.dart';
 
@@ -88,7 +88,7 @@ class NewsCard extends StatelessWidget {
               body: SingleChildScrollView(
                 child: Wrap(
                   children: [
-                    Container(
+                    SizedBox(
                       // alignment: Alignment.center,
                       height: 250,
                       child: Hero(

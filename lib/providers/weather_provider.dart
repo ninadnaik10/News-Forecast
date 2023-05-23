@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:weather_news_app/services/weather_services.dart';
+import 'package:news_forecast/services/weather_services.dart';
 
 import '../models/weather_model.dart';
 
@@ -17,20 +17,18 @@ class WeatherState with _$WeatherState {
 }
 
 class WeatherNotifier extends StateNotifier<WeatherState> {
-  WeatherNotifier() : super(WeatherState(weatherModel: WeatherModel(current: null))){
+  WeatherNotifier()
+      : super(WeatherState(weatherModel: WeatherModel(current: null))) {
     loadWeather();
   }
-
 
   loadWeather() async {
     state = state.copyWith(isLoading: true);
     final weatherResponse = await WeatherServices().getWeatherData();
     final weather = WeatherModel.fromJson(weatherResponse);
-    state = state.copyWith(weatherModel: weather ,isLoading: false);
+    state = state.copyWith(weatherModel: weather, isLoading: false);
   }
-
 }
 
-final weatherProvider = StateNotifierProvider<WeatherNotifier,WeatherState>((ref)=> WeatherNotifier());
-
-
+final weatherProvider = StateNotifierProvider<WeatherNotifier, WeatherState>(
+    (ref) => WeatherNotifier());

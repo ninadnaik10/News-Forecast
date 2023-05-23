@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:weather_news_app/models/weather_model.dart';
-import 'package:weather_news_app/widgets/weather_widget.dart';
-import 'package:weather_news_app/services/weather_services.dart';
-import 'package:weather_news_app/providers/weather_provider.dart';
+import 'package:news_forecast/models/weather_model.dart';
+import 'package:news_forecast/widgets/weather_widget.dart';
+import 'package:news_forecast/services/weather_services.dart';
+import 'package:news_forecast/providers/weather_provider.dart';
 
 class WeatherPage extends ConsumerWidget {
   const WeatherPage({Key? key}) : super(key: key);
@@ -14,9 +14,8 @@ class WeatherPage extends ConsumerWidget {
     bool isLoading = ref.watch(weatherProvider).isLoading;
     return isLoading
         ? const Center(
-      child: CircularProgressIndicator(),
-    )
+            child: CircularProgressIndicator(),
+          )
         : WeatherWidget(current: weather.current!, location: weather.location!);
   }
-
 }

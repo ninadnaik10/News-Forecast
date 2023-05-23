@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
-import 'package:weather_news_app/pages/news_page.dart';
-import 'package:weather_news_app/pages/weather_page.dart';
+import 'package:news_forecast/pages/news_page.dart';
+import 'package:news_forecast/pages/weather_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -35,25 +35,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return DynamicColorBuilder(
         builder: (ColorScheme? lightDynamic, ColorScheme? dark) {
-          final Color primaryColor = Theme.of(context).primaryColor ?? Colors.transparent;
+      final Color primaryColor =
+          Theme.of(context).primaryColor ?? Colors.transparent;
       if (lightDynamic != null) {
         lightColorScheme = lightDynamic.harmonized()..copyWith();
       } else {
         lightColorScheme = ColorScheme.fromSeed(seedColor: brandColor);
       }
       navigationBarStyle = const SystemUiOverlayStyle(
-        systemNavigationBarColor:  Colors.white,
+        systemNavigationBarColor: Colors.white,
       );
 
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          textTheme: TextTheme(
-            bodyMedium: GoogleFonts.openSans()
-          ),
+          textTheme: TextTheme(bodyMedium: GoogleFonts.openSans()),
           useMaterial3: true,
           colorScheme: lightColorScheme,
           appBarTheme: AppBarTheme(
@@ -63,7 +61,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         title: 'Weather News App',
-        home: const MyHomePage(title: 'Weather News App'),
+        home: const MyHomePage(title: 'News Forecast'),
       );
     });
   }
@@ -79,14 +77,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   void initState() {
     super.initState();
     SystemChrome.setSystemUIOverlayStyle(navigationBarStyle);
   }
-
-
 
   int currentPageIndex = 0;
   @override
@@ -118,10 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      body: <Widget>[
-        const WeatherPage(),
-        const NewsPage()
-      ][currentPageIndex],
+      body: <Widget>[const WeatherPage(), const NewsPage()][currentPageIndex],
     );
   }
 }

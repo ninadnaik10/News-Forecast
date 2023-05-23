@@ -1,13 +1,12 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:weather_news_app/models/weather_model.dart';
-import 'package:weather_news_app/constants/newsapiurl.dart';
+import 'package:news_forecast/models/weather_model.dart';
 
 class WeatherWidget extends StatefulWidget {
   final Current current;
   final Location location;
-  const WeatherWidget({Key? key, required this.current, required this.location}) : super(key: key);
+  const WeatherWidget({Key? key, required this.current, required this.location})
+      : super(key: key);
 
   @override
   State<WeatherWidget> createState() => _WeatherWidgetState();
@@ -16,9 +15,12 @@ class WeatherWidget extends StatefulWidget {
 class _WeatherWidgetState extends State<WeatherWidget> {
   // String _locality = "Loading...";
 
+  // late int isDay;
+
   @override
   void initState() {
     super.initState();
+    // const isDay = widget.current.isDay != 1;
   }
 
   @override
@@ -32,13 +34,19 @@ class _WeatherWidgetState extends State<WeatherWidget> {
               borderRadius: BorderRadius.circular(20), color: Colors.white),
           child: Row(
             children: [
-              const Icon(Icons.location_on, color: Colors.black54,),
-              Text(widget.location.name ?? "Not Available", style: const TextStyle(fontSize: 20),),
+              const Icon(
+                Icons.location_on,
+                color: Colors.black54,
+              ),
+              Text(
+                widget.location.name ?? "Not Available",
+                style: const TextStyle(fontSize: 20),
+              ),
             ],
           ),
         ),
         Container(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
           margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20), color: Colors.white),
@@ -46,10 +54,23 @@ class _WeatherWidgetState extends State<WeatherWidget> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CachedNetworkImage(
-                  imageUrl: 'http:${widget.current.condition?.icon}' ??
-                      NewsApiUrl.imageNotFound),
-              // BoxedIcon(icon),
+              // CachedNetworkImage(
+              //     imageUrl: 'http:${widget.current.condition?.icon}' ??
+              //         NewsApiUrl.imageNotFound),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  const FaIcon(
+                    // isDay == 1 ? FontAwesomeIcons.cloudSun : FontAwesomeIcons.cloudMoon,
+                    FontAwesomeIcons.cloudSun,
+                    size: 120,
+                    color: Colors.black54,
+                  ),
+                  Text(widget.current.condition?.text ?? "",
+                      style:
+                          const TextStyle(fontSize: 24, fontWeight: FontWeight.bold))
+                ],
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -60,7 +81,7 @@ class _WeatherWidgetState extends State<WeatherWidget> {
                   ),
                   Text(
                     "Feels like ${widget.current.feelslikeC?.round()}\u{00B0}C",
-                    style: TextStyle(fontSize: 18),
+                    style: const TextStyle(fontSize: 18),
                   )
                 ],
               ),
