@@ -1,6 +1,6 @@
 # Hello Contributors!
 
-- If you want to have a feature in the project open an [issue](https://github.com/ninadnaik10/expense-splitter/issues) in the repository.
+- If you want to have a feature in the project open an [issue](https://github.com/ninadnaik10/news-forecast/issues) in the repository.
 - Found an issue and want to fix it? Thanks a lot, go ahead.
 - Fork the project and `git clone https://github.com/<YourUserName>/news-forecast.git`
 - Create another branch `git checkout -b <branch-name>`
