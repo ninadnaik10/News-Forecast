@@ -3,7 +3,7 @@ description: A news and weather app.
 
 publish_to: 'none'
 
-version: 1.0.0+3000
+version: 1.0.0+3002
 
 environment:
   sdk: '>=2.19.4 <3.0.0'
@@ -13,17 +13,20 @@ dependencies:
     sdk: flutter
 
   dynamic_color: ^1.6.3
-  dio:
+#  dio:
   flutter_riverpod:
   freezed_annotation:
   cached_network_image:
 #  statusbarz: ^1.0.13
   google_fonts:
   url_launcher: ^6.1.10
-  dio_http_cache:
+#  dio_http_cache:
   font_awesome_flutter:
-  weather_icons:
+#  weather_icons:
   http:
+#  flutter_cache_manager:
+  shared_preferences:
+  connectivity_plus: ^4.0.1
 #  location: ^4.4.0
 #  flutter_cache_manager: ^3.3.0
 #  geocoding:
