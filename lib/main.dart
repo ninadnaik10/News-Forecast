@@ -9,18 +9,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void main() {
-  //Setting SysemUIOverlay
-  // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-  //     // systemStatusBarContrastEnforced: true,
-  //     systemNavigationBarColor: Colors.transparent,
-  //     systemNavigationBarDividerColor: Colors.transparent,
-  //     systemNavigationBarIconBrightness: Brightness.dark,
-  //     // statusBarIconBrightness: Brightness.dark
-  //   )
-  // );
-
-//Setting SystmeUIMode
-//   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: [SystemUiOverlay.top]);
   runApp(
     const ProviderScope(
       child: MyApp(),
@@ -79,13 +67,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  late PageController _pageController;
+  int currentPageIndex = 0;
+
   @override
   void initState() {
     super.initState();
+    _pageController = PageController(initialPage: currentPageIndex);
     SystemChrome.setSystemUIOverlayStyle(navigationBarStyle);
   }
 
-  int currentPageIndex = 0;
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,10 +113,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           ElevatedButton(
                               onPressed: () {
-                                showLicensePage(context: context, applicationName: "News Forecast");
+                                showLicensePage(
+                                    context: context,
+                                    applicationName: "News Forecast");
                               },
                               child: const Text("Licenses"))
-                          // IconButton(onPressed: () => launchUrl(Uri.parse('https://github.com/ninadnaik10/News-Forecast')), icon: const FaIcon(FontAwesomeIcons.github))
                         ],
                       ),
                     ),
@@ -133,6 +131,11 @@ class _MyHomePageState extends State<MyHomePage> {
         onDestinationSelected: (int index) {
           setState(() {
             currentPageIndex = index;
+            _pageController.animateToPage(
+              index,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
           });
         },
         selectedIndex: currentPageIndex,
@@ -149,7 +152,18 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      body: <Widget>[const WeatherPage(), const NewsPage()][currentPageIndex],
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: (index) {
+          setState(() {
+            currentPageIndex = index;
+          });
+        },
+        children: const [
+          WeatherPage(),
+          NewsPage(),
+        ],
+      ),
     );
   }
 }

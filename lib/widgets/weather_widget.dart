@@ -63,12 +63,12 @@ class _WeatherWidgetState extends State<WeatherWidget> {
                   const FaIcon(
                     // isDay == 1 ? FontAwesomeIcons.cloudSun : FontAwesomeIcons.cloudMoon,
                     FontAwesomeIcons.cloudSun,
-                    size: 120,
+                    size: 100,
                     color: Colors.black54,
                   ),
                   Text(widget.current.condition?.text ?? "",
-                      style:
-                          const TextStyle(fontSize: 24, fontWeight: FontWeight.bold))
+                      style: const TextStyle(
+                          fontSize: 24, fontWeight: FontWeight.bold))
                 ],
               ),
               Column(
